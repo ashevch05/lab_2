@@ -2,6 +2,7 @@ import unittest
 import test_2 as a
 import sys
 import io
+from io import StringIO
 
 
 class BubbleSortTest(unittest.TestCase):
@@ -56,6 +57,16 @@ class BubbleSortTest(unittest.TestCase):
                 exit_code, sorted_numbers = a.main()
                 self.assertEqual(exit_code, 0)
                 self.assertEqual(sorted_numbers, expected_result)
+
+    def test_exit_code_1(self):
+        nums_exit_code = ['a', 2, 1, 'b', 2, 4.5]
+        exit_code, _ = a.main(nums_exit_code)
+        self.assertEqual(exit_code, 1)
+
+        nums_exit_code_str = "3 5 7.65 8 4 1"
+        exit_code_str, _ = a.main(nums_exit_code_str)
+        self.assertEqual(exit_code_str, 1)
+
 
 if __name__ == '__main__':
     unittest.main()
